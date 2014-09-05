@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<!-- saved from url=(0064)http://www.aetherpoint.com/blogpost/web-scraping-with-casper-js/ -->
+<html lang="en" class=" js csstransforms csstransforms3d csstransitions js-ready"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<title>Web Scraping With Casper Js</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimal-ui">
+<meta name="author" content="Andrew Johnson">
+<link href="./Web Scraping With Casper Js_files/general-c38adc5729dc877c457b280344d471a4.css" type="text/css" rel="stylesheet" media="all">
+<link href="./Web Scraping With Casper Js_files/fonts-895f07787cef343b8f54337129cba22f.css" type="text/css" rel="stylesheet" media="all"><link rel="stylesheet" href="http://www.aetherpoint.com/assets/media/icons.data.svg.css"><script src="./Web Scraping With Casper Js_files/modernizr-7f46bf5063d922b7d2d564c45e891ab5.js"></script>
+<script src="./Web Scraping With Casper Js_files/yepnope.config-7a851a5885c3a44d84515ba28b6e4e32.js"></script>
+<script src="./Web Scraping With Casper Js_files/fastclick-b7d206f013fdb6e880bf8358485b0de9.js"></script>
+<script src="./Web Scraping With Casper Js_files/picturefill-d818a0b857c0de0bfafddaa414592bef.js"></script>
+<link rel="shortcut icon" href="http://www.aetherpoint.com/assets/media/favicon.ico">
+<link rel="apple-touch-icon" href="http://www.aetherpoint.com/assets/media/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="http://www.aetherpoint.com/assets/media/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="http://www.aetherpoint.com/assets/media/apple-touch-icon-114x114.png">
+<script>
+  /* grunticon Stylesheet Loader | https://github.com/filamentgroup/grunticon | (c) 2012 Scott Jehl, Filament Group, Inc. | MIT license. */
+window.grunticon=function(e){if(e&&3===e.length){var t=window,n=!(!t.document.createElementNS||!t.document.createElementNS("http://www.w3.org/2000/svg","svg").createSVGRect||!document.implementation.hasFeature("http://www.w3.org/TR/SVG11/feature#Image","1.1")||window.opera&&-1===navigator.userAgent.indexOf("Chrome")),o=function(o){var r=t.document.createElement("link"),a=t.document.getElementsByTagName("script")[0];r.rel="stylesheet",r.href=e[o&&n?0:o?1:2],a.parentNode.insertBefore(r,a)},r=new t.Image;r.onerror=function(){o(!1)},r.onload=function(){o(1===r.width&&1===r.height)},r.src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw=="}};
+grunticon( [ "/assets/media/icons.data.svg.css", "/assets/media/icons.data.png.css", "/assets/media/icons.fallback.css" ] );
+    </script>
+<noscript>&lt;link href="/assets/media/icons.fallback.css" rel="stylesheet"&gt;</noscript>
+</head>
+<body>
+<div id="outer-wrap" class="article">
+<div id="inner-wrap" class="article">
+<header id="top" role="banner">  
+<div class="nav-block">  
+<div class="nav-clip">  
+<div class="logo-contain">
+<h1 class="a11y-only">Aetherpoint</h1>
+<a href="http://www.aetherpoint.com/"><div class="icon-aetherpoint-logo">Home</div></a>
+<a class="nav-btn" id="nav-open-btn" href="http://www.aetherpoint.com/blogpost/web-scraping-with-casper-js/#global-nav"><div class="icon-menu-nav" style="width: 45.583px; height: 38.833px">Open Navigation</div></a>
+</div>  
+</div>  
+</div></header>  
+<nav id="global-nav" role="navigation">  
+<div class="nav-block">  
+<ul>
+<li><a href="http://www.aetherpoint.com/blog">Blog</a></li>
+<li><a href="http://www.aetherpoint.com/work">Work</a></li>
+<li><a href="http://www.aetherpoint.com/about">About</a></li>
+<li><a href="http://www.aetherpoint.com/contact">Contact</a></li>
+</ul>
+<a class="close-btn" id="nav-close-btn" href="http://www.aetherpoint.com/blogpost/web-scraping-with-casper-js/#top"><div class="icon-menu-close-nav" style="width: 46.5px; height: 38.833px">Return to Content</div></a>
+</div>  
+</nav>  
+<main role="main">  
+<article role="article" class="blog-post individual-post">  
+<h1 class="post-header"><div>Web Scraping With Casper Js</div></h1>
+<aside role="complementary" class="post-info">  
+<span class="post-date">2014-05-19</span> •
+<span class="tags">
+<li><a href="http://www.aetherpoint.com/blogposttags/#Web Development-ref">Web Development</a>,</li>
+</span>
+</aside>  
+<div class="post-content">  
+<p><span class="blue-highlight">A code snippet for scraping with Casper.js.</span></p>
+<div class="icon-divider"></div>
+<p>Web scraping with <a href="http://casperjs.org/">casper.js</a> (built on Phantom.js, a headless webkit browser) is pretty simple. Casper provides a nice API allowing us to easily time and target tests. We just collect information from the DOM and save it to analyze later.</p>
+<p>After installing <a href="http://phantomjs.org/">Phantom.js</a>, you can install Casper.js <a href="http://blog.nodejs.org/2011/03/23/npm-1-0-global-vs-local-installation/">globally</a> on your computer through <code>npm</code>. Just type <code>npm install -g casperjs</code> in your terminal.</p>
+<p>Once Casper.js is installed, you can run a file through the command line with <code>casperjs filename.js</code>.</p>
+<p>Let's say we want to scrape Twitter and list out who someone follows. Maybe we want to this to collect data in order to graph the levels of influence a certain person has. Below is some rough code illustrating for how we might approach this:</p>
+<pre class="prettyprint lang-js">// Scrapes twitter users' follows. With great power comes great responsibility Runs on Casper.js (Phantom JS).
+
+// Define a twitter ID to look up.
+var twitterId = 'ChaptrApp';
+
+// Define your own e-mail and password to get access to Twitter
+var email = 'YourEmail';
+var auth = 'YourPassword'
+
+// Define a selector to look for before doing an action.
+var findSelector = '.GridTimeline-items';
+
+var urls = [];
+
+var links = [];
+var casper = require('casper').create();
+
+function getLinks() {
+    var links = document.querySelectorAll('div.ProfileCard a.ProfileCard-screennameLink');
+
+    return Array.prototype.map.call(links, function(e) {
+
+        // Return all of these links
+        return e.getAttribute('href');
+    });
+}
+
+// Start at twitter.com with the defined twitter id
+casper.start('http://twitter.com/' + twitterId + '/following', function() {
+
+      // Log the site title
+      this.echo(this.getTitle());
+
+      // Log the starting URL
+      console.log('Starting location is ' + this.getCurrentUrl());
+});
+
+casper.then(function() {
+
+      // Sign In To Twitter. Be careful not to abuse this or we run into the captcha.
+      // TODO figure out how to run this overtime without getting caught.
+      this.fillSelectors('form.signin', {
+          'input[name="session[username_or_email]"]':    email,
+          'input[name="session[password]"]':             auth
+      }, true);
+});
+
+casper.then(function() {
+
+    // Log the new URL
+    console.log('Authentication ok, new location is ' + this.getCurrentUrl());
+
+    // Log Error if we hit the captcha
+    if (/captcha/.test(this.getCurrentUrl())) {
+        console.log('Please login and confirm your captcha.');
+    }
+});
+
+casper.waitForSelector('.GridTimeline-items', function() {
+
+      // Log that we found the right selector to capture. This is looking for the follower grid on the mid 2014 Twitter Redesign.
+      console.log('.GridTimeline-items' + ' is loaded.');
+      
+      // Screenshot
+      this.captureSelector('timeline.png', 'div.GridTimeline-items');
+
+      // Grab First Links
+      this.emit('results.log');
+});
+
+function tryAndScroll(casper) {
+    casper.waitFor(function() {
+        this.page.scrollPosition = { top: this.page.scrollPosition["top"] + 3333, left: 0 };
+        return true;
+    }, function() {
+        var info = this.getElementInfo('div.GridTimeline-footerIcon span.Icon--logo');
+
+        // Recursively scroll until the bottom nav is visible.
+        if (info["visible"] !== true) {
+            this.waitWhileVisible('div.GridTimeline-footerIcon span.Icon--logo', function () {
+                this.emit('results.loaded');
+                this.emit('results.log');
+
+            // We're still missing the last few rows of people.
+            }, function () {
+                this.echo('Next results not loaded');
+            }, 5000);
+        }
+    }, function() {
+        this.echo("Scrolling failed. Sorry.").exit();
+    }, 500);
+}
+
+casper.on('results.loaded', function () {
+
+    this.echo('Scrollin');
+
+    // Call Scroll Function 
+    tryAndScroll(this);
+});
+
+casper.on('results.log', function () {
+    // Grab Additional Links
+    links = this.evaluate(getLinks);
+});
+
+casper.then(function() {
+    tryAndScroll(this);
+});
+
+// Snippet from: https://www.andykelk.net/tech/web-scraping-with-casperjs
+casper.run(function() {
+
+    // Run through our array to format the JSON for D3
+    for (i in links) {
+      links[i] = "{'name':" + "'" + links[i] + "'" + ", 'group': 2}";
+    }
+
+    nodeLinks = [];
+
+    var min;
+
+    for (i in links) {
+      // A crude buffer
+      min = Math.min((parseInt(i) * 10), 450);
+
+      nodeLinks.push("{'source':" + (parseInt(i) + 1) + "," + "'target':0,'value':" + min + "}");
+    }
+
+    // Format it
+    var re = /\//g;
+    var name = links.join(' ');
+ 
+    // Change to a string
+    var jsonString = JSON.stringify(links);
+
+    // Do some gross replaces just for D3
+    var finalJson = ("\"nodes\" :[ " + "{'name': '" + twitterId + "', " + "'group':1}\", " + jsonString.replace(re," ") + " ]");
+
+    finalJson = finalJson.replace(/"\{/g,"{");
+    finalJson = finalJson.replace(/\}"/g,"}");
+
+    finalJson = finalJson.replace(/\[\{/g,"{");
+    finalJson = finalJson.replace(/\}\]/g,"}");
+
+    finalJson = "{ " + finalJson + ", " + "\n \n'links':[" + nodeLinks.toString() + "]" + " }"; 
+
+    finalJson = finalJson.replace(/'/g,"\"");
+
+    console.log(finalJson);
+
+    // Export as JSON
+    require('fs').write("finalJson.json", finalJson, 'w');
+
+    // Close Casper
+    this.exit();
+});
+</pre>
+<p>From here you could use the JSON to visualize something like small designer communities on Twitter – based on the assumption that people follow who they look up to and occasionally prune their follower list. You could recursively go through each of the followers from the original user of interest and then map out overlap off who they follow.</p>
+<p>Here, a super simple example just shows who the target user has followed. The more recent ones are are closer to the center of the circle (They're not proportional – the code above doesn't have access to any sort of time through API).</p>
+<p><a href="http://aetherpoint.com/lab/casper-js-twitter-follower-chart/">
+<img src="./Web Scraping With Casper Js_files/d3.png" alt="7th Gear Animated Title">
+</a></p>
+</div>  
+</article>  
+<div class="icon-divider"></div>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+<div class="more-posts">  
+<li class="prev"><a href="http://www.aetherpoint.com/blogpost/elements-of-typographic-style-animation" title="Elements of Typographic Style Animation">«</a></li>
+<a href="http://www.aetherpoint.com/blog">More Posts</a>
+<li class="next disabled"><a>»</a></li>
+</div>  
+<div class="icon-divider"></div>
+</main>  
+<footer>  
+<div class="nav-block">  
+<div class="nav-clip">  
+<div class="return-to-top"><a href="http://www.aetherpoint.com/blogpost/web-scraping-with-casper-js/#">Return to Top<div class="icon-back-to-top inline-icon" style="width: 28.667px; height: 29.642px"></div></a></div>
+<section>
+<ul>
+<li> <a href="mailto:inharmony88@gmail.com?subject=Hello!" title="inharmony88@gmail.com">E-Mail Me<div class="icon-email inline-icon" style="width: 32px; height: 30.663px"></div></a> </li>
+<li> <a href="https://twitter.com/Aetherpoint" target="_blank">@aetherpoint<div class="icon-twitter inline-icon" style="width: 33.682px; height: 31.263px"></div></a></li>
+</ul>
+</section>
+<div class="copyright">© Copyright 2014 Andrew Johnson</div>
+</div>  
+</div>  
+</footer>  
+<script src="./Web Scraping With Casper Js_files/nav.min-cd14b18e5e02258a5fbdd4bf12c203dc.js"></script>
+<script src="./Web Scraping With Casper Js_files/scroll-717158cd331bdcfc86d57183bc63ae37.js"></script>
+</div>  
+</div>  
+
+
+<div style="-webkit-transform: translate3d(0px, 0px, 0px); transform: translate3d(0px, 0px, 0px); position: fixed; top: 0px; right: 0px; left: 0px; bottom: 0px; opacity: 0; z-index: 9; pointer-events: none;"></div></body></html>

@@ -1,0 +1,77 @@
+/* @license
+ * MyFonts Webfont Build ID 2507272, 2013-03-17T20:41:01-0400
+ * 
+ * The fonts listed in this notice are subject to the End User License
+ * Agreement(s) entered into by the website owner. All other parties are 
+ * explicitly restricted from using the Licensed Webfonts(s).
+ * 
+ * You may obtain a valid license at the URLs below.
+ * 
+ * Webfont: Geogrotesque Light by Emtype Foundry
+ * URL: http://www.myfonts.com/fonts/emtype/geogrotesque/light/
+ * Copyright: Copyright (c) 2009-2011 by Eduardo Manso. All rights reserved.
+ * 
+ * Webfont: Geogrotesque SemiBold by Emtype Foundry
+ * URL: http://www.myfonts.com/fonts/emtype/geogrotesque/semibold/
+ * Copyright: Copyright (c) 2009-2011 by Eduardo Manso. All rights reserved.
+ * 
+ * License: http://www.myfonts.com/viewlicense?type=web&buildid=2507272
+ * 
+ * © 2013 MyFonts Inc
+*/
+
+/* @import must be at top of file, otherwise CSS will not work */
+
+/* This seems to be slowing things down... */
+
+@import url("//hello.myfonts.net/count/264208");
+
+@font-face {
+	font-family: "Geogrotesque-Light";
+	src: url("../media/fonts/webfonts/264208_0_0.eot");
+	src: url("../media/fonts/webfonts/264208_0_0.eot?#iefix") format("embedded-opentype"),
+	url("../media/fonts/webfonts/264208_0_0.woff") format("woff"),
+	url("../media/fonts/webfonts/264208_0_0.ttf") format("truetype");
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: "Geogrotesque-SemiBold";
+	src: url("../media/fonts/webfonts/264208_1_0.eot");
+	src: url("../media/fonts/webfonts/264208_1_0.eot?#iefix") format("embedded-opentype"),
+	url("../media/fonts/webfonts/264208_1_0.woff") format("woff"),
+	url("../media/fonts/webfonts/264208_1_0.ttf") format("truetype");
+	font-weight: normal;
+	font-style: normal;
+}
+
+/*@font-face {
+	font-family: "Geogrotesque-SemiBold";
+	src: url("../_fonts/geogtq-sb.eot");
+	src: url("../_fonts/geogtq-sb.eot?#iefix") format("embedded-opentype"),
+			 url("../_fonts/geogtq-sb.woff") format("woff"),
+			 url("../_fonts/geogtq-sb.ttf") format("truetype"),
+			 url("../_fonts/geogtq-sb.svg#geogtq-sb") format("svg");
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: "Geogrotesque-Light";
+	src: url("../_fonts/geogtq-lg.eot");
+	src: url("../_fonts/geogtq-lg.eot?#iefix") format("embedded-opentype"),
+			 url("../_fonts/geogtq-lg.woff") format("woff"),
+			 url("../_fonts/geogtq-lg.ttf") format("truetype"),
+			 url("../_fonts/geogtq-lg.svg#geogtq-sb") format("svg");
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'Geogrotesque-LightItalic';
+	src: url('../_fonts/geoglgit.eot');
+	src: url('../_fonts/geoglgit.eot?#iefix') format('embedded-opentype'),
+			 url('../_fonts/geoglgit.woff') format('woff'),
+			 url('../_fonts/geoglgit.ttf') format('truetype'),
+			 url('../_fonts/geoglgit.svg#geoglgit') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}*/

@@ -1,0 +1,1289 @@
+@charset="utf-8";
+
+/* Elements */
+html[dir=ltr] {
+	text-align: right;
+}
+* {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+.disable-hover,
+.disable-hover * {
+  pointer-events: none !important;
+}
+body {
+	background:
+	url("../media/bg-texture-compressed.jpg"); /* Only give the image for the background when enhanced? */
+	background-color: #fefefe;
+	background-size: 159px;
+	color: #262e37;
+	font-family: "Geogrotesque-Light", "HelveticaNeue", Helvetica, sans-serif;
+	margin: 0;
+}
+h1, h2, h3, h4, h5, h6 {
+	font-family: "Geogrotesque-SemiBold", "HelveticaNeue", Helvetica, sans-serif;
+	font-weight: normal;
+		-webkit-font-feature-settings: "kern";
+	font-feature-settings: "kern";
+	-webkit-font-feature-settings: "liga";
+	font-feature-settings: "liga";/*text-rendering: optimizeLegibility;*/	/* Drop this */	
+	/*-webkit-font-feature-settings: "kern", "liga", "case"; [> No variation <]*/
+	/*-moz-font-feature-settings: "kern=1", "liga=1", "case=1"; [> Firefox 4.0 to 14.0 <]*/
+	/*-moz-font-feature-settings: "kern", "liga" , "case"; [> Firefox 15.0 onwards <]*/
+	/*-moz-font-feature-settings: "kern" 1, "liga" 1, "case" 1; [> Firefox 15.0 onwards explicitly set feature values <]*/
+	/*font-feature-settings: "kern", "liga", "case"; [> No variation <]*/
+}
+h1 {
+	margin: 0;
+}
+p {
+		-webkit-font-feature-settings: "kern";
+	font-feature-settings: "kern";
+	-webkit-font-feature-settings: "liga";
+	font-feature-settings: "liga";/*text-rendering: optimizeLegibility;*/	/* Drop this */	
+	/*-webkit-font-feature-settings: "kern", "liga", "case"; [> No variation <]*/
+	/*-moz-font-feature-settings: "kern=1", "liga=1", "case=1"; [> Firefox 4.0 to 14.0 <]*/
+	/*-moz-font-feature-settings: "kern", "liga" , "case"; [> Firefox 15.0 onwards <]*/
+	/*-moz-font-feature-settings: "kern" 1, "liga" 1, "case" 1; [> Firefox 15.0 onwards explicitly set feature values <]*/
+	/*font-feature-settings: "kern", "liga", "case"; [> No variation <]*/
+}
+img {
+	max-width: 100%;
+}
+a:link, a:visited {
+	color: #cb4a29;
+	text-decoration: none;
+	/* This is bugging out for Mobile Devices! */
+	transition: color 0.15s ease-in, background-color 0.15s ease-in;
+
+	-webkit-transition: color .15s ease-in, background-color 0.15s ease-in;
+	-moz-transition: color .15s ease-in, background-color 0.15s ease-in;
+	-ms-transition: color .15s ease-in, background-color 0.15s ease-in;
+	-o-transition: color .15s ease-in, background-color 0.15s ease-in;
+}
+a:hover, a:active { /* Accessible focus treatment: people.opera.com/patrickl/experiments/keyboard/test */
+	outline: none;
+}
+a:hover {
+	color: #46b4d3;
+}
+main { /* To Mimic HTML5 Main element */
+	display: block;
+	margin: 0 auto;
+	padding-bottom: 1.5em;
+	position: relative;
+	width: 80%;
+}
+header, footer {
+	background: #111;
+	background-image: url("../media/cover-small.jpg");
+	background-size: cover;
+	position: relative;
+	z-index: 100;
+	/* These are to prevent blinking in safari - can these be applied more economically? */
+	-webkit-transform-style: preserve-3d;
+	-webkit-backface-visibility: hidden;
+}
+nav ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	zoom: 1;
+	-webkit-font-smoothing: antialiased; /* Only on light text over dark backgrounds */
+	-webkit-font-feature-settings: "kern", "liga", "case"; /* No variation */
+	-moz-font-feature-settings: "kern=1", "liga=1", "case=1"; /* Firefox 4.0 to 14.0 */
+	-moz-font-feature-settings: "kern", "liga" , "case"; /* Firefox 15.0 onwards */
+	-moz-font-feature-settings: "kern" 1, "liga" 1, "case" 1; /* Firefox 15.0 onwards explicitly set feature values */
+	font-feature-settings: "kern", "liga", "case"; /* No variation */
+
+}
+nav ul li { /* Could use some slick CSS Transition Eye candy with Media Queries */
+	border-top: solid #444 1px;
+
+/*	-webkit-transition: all 0.5s ease-in;
+	-moz-transition: all 0.5s ease-in;
+	-ms-transition: all 0.5s ease-in;
+	-o-transition: all 0.5s ease-in;*/
+}
+li {
+/*		-webkit-font-feature-settings: "kern";
+	font-feature-settings: "kern";
+	-webkit-font-feature-settings: "liga";
+	font-feature-settings: "liga";*//*text-rendering: optimizeLegibility;*/ /* Drop this */	
+}
+nav ul li:last-child {
+	border-bottom: solid #444 1px;
+}
+nav ul li a {
+	display: block;
+	font-size: 1.45em;
+	padding: .9em 0 .77em 10%;
+}
+nav ul li a:hover, nav ul li a:active {  /* I still need a current page style on desktop */
+	color: #46b4d3;
+	background-color: #222;
+}
+footer {
+	border-top: 1px solid #fefefe;
+	font-size: 1.3em;
+	text-align: center;
+	-webkit-font-smoothing: antialiased; /* Only on light text over dark backgrounds */
+}
+footer ul {
+	padding: 0;
+	list-style: none;
+}
+footer ul li {
+	display: inline-block;
+	margin: 0 1.5em 1em 1.5em;
+}
+.tags li {
+	display: inline-block;
+}
+article:not(.blog-post) .tags li a {
+	background-color: #f1f1f1;
+	background-color: rgba(230,230,235,.45);
+	border-radius: .3em;
+    border: solid #fefefe 1px;
+	display: inline-block;
+	margin: .25em 0;
+	padding: .1em .5em .02em .5em;
+  	white-space: pre;
+}
+blockquote {
+	border-left: solid #e7e7e7 2px;
+/*	font-family: "Geogrotesque-LightItalic", "HelveticaNeue", Helvetica, sans-serif;*/
+	margin-left: 0;
+	padding-left: 10%;
+}
+pre {
+	background-color: #f1f1f1;
+	background-color: rgba(230,230,235,.45);
+ 	border-radius: .3em;
+	box-shadow: 0 0 .3em .1em #fefefe, 0 0 0 .4em rgba(230,230,235,.45);
+	line-height: 1.5em;
+	overflow: auto;
+	padding: 4.5%;
+	position: relative;
+  white-space: pre-wrap;
+}
+code {
+	background-color: #f1f1f1;
+	background-color: rgba(230,230,235,.45);
+    border-radius: .3em;
+    border: solid #fefefe 1px;
+	padding: .34em .25em .25em .25em;
+}
+pre, code {
+	font-family: "Consolas", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, monospace;
+	font-size: .8em;
+}
+
+/* Logo Container */
+.logo-contain {
+	margin: 0 auto;
+	overflow: hidden;
+	width: 4em;
+}
+.logo-contain .icon-aetherpoint-logo {
+	background-position: 50% 60%;
+	height: 4.5em;
+
+	transition: all 0.15s ease-in;
+
+	-webkit-transition: all 0.15s ease-in;
+	-moz-transition: all 0.15s ease-in;
+	-ms-transition: all 0.15s ease-in;
+	-o-transition: all 0.15s ease-in;
+
+	filter: alpha(Opacity=9);
+	opacity: .9;
+}
+.logo-contain .icon-aetherpoint-logo:hover, .logo-contain .icon-aetherpoint-logo:active {
+    -webkit-filter: blur(.1em);
+	filter: alpha(Opacity=80); /* Use an animation of the A falling apart? */
+	opacity: .5;
+}
+.logo-contain a:link {
+	outline: none;
+	overflow: hidden;
+	text-indent: 200%;
+	white-space: nowrap;
+}
+
+/* Content Containers */
+#inner-wrap {
+	background: url("../media/svg/line.svg") no-repeat;
+	background-position: left 8.23em;
+	background-size: 102% auto; /* Be careful, this doesn't cover the whole screen when it's wide! Add a media Query Fix? */
+	position: relative;
+	width: 100%;
+}
+#inner-wrap.article  {
+	background-image:none;
+	background-color: #fefefe;
+	background-color: rgba(254, 254, 254, .4);
+}
+#outer-wrap {
+	background:
+	linear-gradient(-17deg, rgba(205, 231, 232, .2) 13.5%, transparent 0),
+	linear-gradient(163deg, rgba(248, 190, 169, .2) 15.1%, transparent 0),
+	linear-gradient(200deg, rgba(254, 254, 254, 1) 3.5em, rgba(254, 254, 254, 0) 10em),
+	linear-gradient(17deg, rgba(254, 254, 254, 1) 4.5em, rgba(254, 254, 254, 0) 10em);
+	/* The gradient blending into the bottom left corner is covered by the blue angle on desktop! */
+	overflow: hidden;
+	position: relative;
+	width: 100%;
+
+	background:
+	-moz-linear-gradient(-17deg, rgba(205, 231, 232, .2) 13.5%, transparent 0),
+	-moz-linear-gradient(163deg, rgba(248, 190, 169, .2) 15.1%, transparent 0),
+	-moz-linear-gradient(200deg, rgba(254, 254, 254, 1) 3.5em, rgba(254, 254, 254, 0) 10em),
+	-moz-linear-gradient(17deg, rgba(254, 254, 254, 1) 4.5em, rgba(254, 254, 254, 0) 10em);
+	background:
+	-ms-linear-gradient(-17deg, rgba(205, 231, 232, .2) 13.5%, transparent 0),
+	-ms-linear-gradient(163deg, rgba(248, 190, 169, .2) 15.1%, transparent 0),
+	-ms-linear-gradient(200deg, rgba(254, 254, 254, 1) 3.5em, rgba(254, 254, 254, 0) 10em),
+	-ms-linear-gradient(17deg, rgba(254, 254, 254, 1) 4.5em, rgba(254, 254, 254, 0) 10em);
+	background:
+	-o-linear-gradient(-17deg, rgba(205, 231, 232, .2) 13.5%, transparent 0),
+	-o-linear-gradient(163deg, rgba(248, 190, 169, .2) 15.1%, transparent 0),
+	-o-linear-gradient(200deg, rgba(254, 254, 254, 1) 3.5em, rgba(254, 254, 254, 0) 10em),
+	-o-linear-gradient(17deg, rgba(254, 254, 254, 1) 4.5em, rgba(254, 254, 254, 0) 10em);
+	background:
+	-webkit-linear-gradient(-17deg, rgba(205, 231, 232, .2) 13.5%, transparent 0),
+	-webkit-linear-gradient(163deg, rgba(248, 190, 169, .2) 15.1%, transparent 0),
+	-webkit-linear-gradient(200deg, rgba(254, 254, 254, 1) 3.5em, rgba(254, 254, 254, 0) 10em),
+	-webkit-linear-gradient(17deg, rgba(254, 254, 254, 1) 4.5em, rgba(254, 254, 254, 0) 10em);
+}
+header .nav-block, footer .nav-block { /* This should be more semantic and reusable */
+	background: repeating-linear-gradient(-17deg, transparent, transparent 9px, rgba(255, 255, 255, .06) 9px, rgba(255, 255, 255, .06) 10px);
+
+	background: -moz-repeating-linear-gradient(-17deg, transparent, transparent 9px, rgba(255, 255, 255, .06) 9px, rgba(255, 255, 255, .06) 10px); /* Firefox / safari rendering issues*/
+	background: -ms-linear-repeating-linear-gradient(-17deg, transparent, transparent 9px, rgba(255, 255, 255, .06) 9px, rgba(255, 255, 255, .06) 10px);
+	background: -o-linear-repeating-linear-gradient(-17deg, transparent, transparent 9px, rgba(255, 255, 255, .06) 9px, rgba(255, 255, 255, .06) 10px);
+	background: -webkit-repeating-linear-gradient(-17deg, transparent, transparent 9px, rgba(255, 255, 255, .06) 9px, rgba(255, 255, 255, .06) 10px);
+
+	background-size: 178px 267px;
+	border-bottom: solid #111 1px;
+}
+header .nav-clip {
+	/* Appling styles differently for visual tweaks */
+	padding: 2em 0;
+	background: linear-gradient(17deg, rgba(17, 17, 17, 1) .5em, rgba(17, 17, 17, 0) 3.5em),
+	            linear-gradient(200deg, rgba(17, 17, 17, 1) .4em, rgba(17, 17, 17, 0) 3em);
+
+	background: -moz-linear-gradient(17deg, rgba(17, 17, 17, 1) .5em, rgba(17, 17, 17, 0) 3.5em),
+	            -moz-linear-gradient(200deg, rgba(17, 17, 17, 1) .4em, rgba(17, 17, 17, 0) 3em);
+	background: -ms-linear-gradient(17deg, rgba(17, 17, 17, 1) .5em, rgba(17, 17, 17, 0) 3.5em),
+	            -ms-linear-gradient(200deg, rgba(17, 17, 17, 1) .4em, rgba(17, 17, 17, 0) 3em);
+	background: -o-linear-gradient(17deg, rgba(17, 17, 17, 1) .5em, rgba(17, 17, 17, 0) 3.5em),
+	            -o-linear-gradient(200deg, rgba(17, 17, 17, 1) .4em, rgba(17, 17, 17, 0) 3em);
+	background: -webkit-linear-gradient(17deg, rgba(17, 17, 17, 1) .5em, rgba(17, 17, 17, 0) 3.5em),
+	            -webkit-linear-gradient(200deg, rgba(17, 17, 17, 1) .4em, rgba(17, 17, 17, 0) 3em);
+}
+footer .nav-clip {
+	padding: 1.5em 0 2em 0;
+	background: linear-gradient(200deg, rgba(17, 17, 17, 1) .5em, rgba(17, 17, 17, 0) 3.5em),
+	            linear-gradient(17deg, rgba(17, 17, 17, 1) .4em, rgba(17, 17, 17, 0) 3em);
+
+	background: -moz-linear-gradient(200deg, rgba(17, 17, 17, 1) .5em, rgba(17, 17, 17, 0) 3.5em),
+	            -moz-linear-gradient(17deg, rgba(17, 17, 17, 1) .4em, rgba(17, 17, 17, 0) 3em);
+	background: -ms-linear-gradient(200deg, rgba(17, 17, 17, 1) .5em, rgba(17, 17, 17, 0) 3.5em),
+	            -ms-linear-gradient(17deg, rgba(17, 17, 17, 1) .4em, rgba(17, 17, 17, 0) 3em);
+	background: -o-linear-gradient(200deg, rgba(17, 17, 17, 1) .5em, rgba(17, 17, 17, 0) 3.5em),
+	            -o-linear-gradient(17deg, rgba(17, 17, 17, 1) .4em, rgba(17, 17, 17, 0) 3em);
+	background: -webkit-linear-gradient(200deg, rgba(17, 17, 17, 1) .5em, rgba(17, 17, 17, 0) 3.5em),
+	            -webkit-linear-gradient(17deg, rgba(17, 17, 17, 1) .4em, rgba(17, 17, 17, 0) 3em);
+	opacity: .8;
+}
+#global-nav {
+	border-right: solid 1px #444;
+	overflow: hidden;
+	position: relative;
+	width: 100%;
+	z-index: 200;
+}
+
+/* Base Styles */
+main {
+	font-size: 1.1em;
+	line-height: 1.55em;
+	position: relative;
+}
+main h2 {
+	margin-bottom: -.4em;
+}
+main h3 {
+	margin-bottom: -.7em;
+}
+.page-title {
+	font-size: 3em;
+	line-height: 1.1em;
+	margin-top: .56em;
+	margin-bottom: .1em;
+}
+
+/* Index Only */
+.intro {
+	margin-bottom: 2.5em;
+}
+.intro h1 {
+	line-height: 1em;
+	font-size: 5em;
+	margin-left: -1%;
+}
+.intro p {
+	font-size: 1.2em;
+	line-height: 1.5em;
+	margin: .5em 0 1.5em 0;
+	margin-bottom: .5em;
+	position: relative;
+	z-index: 10;
+}
+
+/* Work Page Only */
+.portfolio-item img {
+	border-radius: .1em;
+	box-shadow: 0 0 0 1px #D5D5D5; /*0 0 0 2px #DDD; */
+	cursor: pointer;
+	margin: .6em .13em .8em .13em;
+	transition: all 0.15s ease-in;
+
+	-webkit-transition: all 0.15s ease-in;
+	-moz-transition: all 0.15s ease-in;
+	-ms-transition: all 0.15s ease-in;
+	-o-transition: all 0.15s ease-in;
+}
+.portfolio-item:hover img, .portfolio-item:active img {
+  border-radius: 0;
+	box-shadow: 0 0 0 1px #fefefe, 0 0 0 10px rgba(205, 231, 232, .8);
+}
+.portfolio-item:hover a, .portfolio-item:active a {
+	color: #46b4d3;
+}
+
+/* Main Headings */
+.intro .primary-heading {
+	margin-top: .35em;
+	margin-bottom: -.1em;
+	opacity: .95;
+/*	color: #010b0d;*/
+}
+.primary-heading div {
+	background: linear-repeating-linear-gradient(-17deg, transparent, transparent 9px, rgba(255, 255, 255, .06) 9px, rgba(255, 255, 255, .06) 10px);
+	position: absolute;
+	width: 100%;
+
+	background: -moz-repeating-linear-gradient(-17deg, transparent, transparent 9px, rgba(255, 255, 255, .06) 9px, rgba(255, 255, 255, .06) 10px);
+	background: -ms-linear-repeating-linear-gradient(-17deg, transparent, transparent 9px, rgba(255, 255, 255, .06) 9px, rgba(255, 255, 255, .06) 10px);
+	background: -o-linear-repeating-linear-gradient(-17deg, transparent, transparent 9px, rgba(255, 255, 255, .06) 9px, rgba(255, 255, 255, .06) 10px);
+	background: -webkit-repeating-linear-gradient(-17deg, transparent, transparent 9px, rgba(255, 255, 255, .06) 9px, rgba(255, 255, 255, .06) 10px);
+	background-size: 178px 267px;
+
+	background-clip: text;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+.primary-heading:after {
+	/*text-shadow: 1px 1px #f8f8f8, 2px 2px #cb4a29;*/
+	content: attr(data-text);
+}
+
+/* About Page Only */
+.col-1, .col-2 {
+	display: inline-block;
+}
+.site-info ul, ul.posts-pages {
+	list-style: none;
+	padding: 0;
+}
+
+/* Post Containers */
+.posts-container {
+	margin-top: 1em; /* This isn't necesary on the home page! */
+}
+.recent-posts {
+	margin-bottom: .5em;
+	text-transform: uppercase;
+}
+.more-posts {
+	font-size: 1.2em;
+	padding: .5em 0 .5em 0;
+	text-align: center;
+	text-transform: uppercase;
+}
+.more-posts li {
+	display: inline;
+}
+.more-posts .next {
+	float: right;
+	padding-right: 5%;
+}
+.more-posts .prev {
+	float: left;
+	padding-left: 5%;
+}
+.more-posts .next.disabled {
+	filter: alpha(Opacity=33);
+	opacity: .33;
+}
+.more-posts .prev.disabled {
+	filter: alpha(Opacity=33);
+	opacity: .33;
+}
+.posts-pages li {
+	display: inline-block;
+	margin: .5em 2%;
+}
+
+.posts-container .blog-post {
+	position: relative;
+	width: 97%;
+}
+
+/* Specific Post */
+.post-title {
+	font-size: 1.35em;
+	margin-bottom: .08em;
+	margin-top: .75em;
+}
+.post-title a {
+	color: #262e37;
+}
+.post-title a:hover, .post-title a:active {
+	color: #46b4d3;
+	text-shadow: 1px 1px 1px #fefefe;
+}
+.post-info {
+	margin-bottom: -.2em;
+}
+.post-date {
+	color: #828585;
+}
+
+/* Article */
+.post-header {
+	font-size: 2em;
+	line-height: 1.1em;
+	margin-bottom: .1em;
+	margin-top: 1em;
+}
+.individual-post .post-content p:nth-child(1) {
+	/*background-color: rgba(205, 231, 232, .2);*/  /* Not as nice as inside the p */
+	font-size: 1.2em;
+	line-height: 1.5em;
+/*	padding: .1em;*/ /* Not as nice as inside the p */
+}
+.post-content img, .post-content blockquote, .post-content pre {
+	display: block;
+	margin: 1.75em 0;
+}
+.post-content ul {
+	padding-left: 1.25em;
+}
+.post-content li {
+	margin: .5em 0;
+}
+.post-content img {
+	box-shadow: 0 0 0 1px #ddd;
+}
+.post-content a:link img {
+	-webkit-transition: all 0.15s ease-in, background-color 0.15s ease-in;
+	-moz-transition: all 0.15s ease-in, background-color 0.15s ease-in;
+	-ms-transition: all 0.15s ease-in, background-color 0.15s ease-in;
+	-o-transition: all 0.15s ease-in, background-color 0.15s ease-in;
+}
+.post-content a:link img:hover, .post-content a:link img:focus {
+	box-shadow: 0 0 0 1px #fefefe, 0 0 0 10px rgba(205, 231, 232, .8);
+}
+
+
+/* Case Study Only */
+.case-study .post-info {
+	margin-bottom: 1.5em;
+}
+.case-study .post-content img.small-image {
+	padding-left: 10%;
+	padding-right: 10%;
+}
+
+/* Icons */
+.icon-divider {
+	border: dashed 1px #ddd;
+}
+.js .icon-divider {
+	background-position: center center;
+	background-size: 100% 100%;
+	height: 1em;
+	border: none;
+}
+.inline-icon {
+	display: inline-block;
+	vertical-align: middle;
+	margin: 0 .25em;
+
+	transition: all 0.15s ease-in, background-color 0.15s ease-in;
+
+	-webkit-transition: all 0.15s ease-in, background-color 0.15s ease-in;
+	-moz-transition: all 0.15s ease-in, background-color 0.15s ease-in;
+	-ms-transition: all 0.15s ease-in, background-color 0.15s ease-in;
+	-o-transition: all 0.15s ease-in, background-color 0.15s ease-in;
+}
+.inline-icon:hover, .inline-icon:active, a:hover .inline-icon, a:active .inline-icon {
+    -webkit-filter: blur(.1em);
+	filter: alpha(Opacity=80);
+	opacity: .8;
+}
+.icon-right-arrow {
+	position: absolute;
+	right: -15%;
+	top: 30%;
+	filter: alpha(Opacity=38);
+	opacity: .1;
+
+	transition: all 0.15s ease-in, background-color 0.15s ease-in;
+
+	-webkit-transition: all 0.15s ease-in, background-color 0.15s ease-in;
+	-moz-transition: all 0.15s ease-in, background-color 0.15s ease-in;
+	-ms-transition: all 0.15s ease-in, background-color 0.15s ease-in;
+	-o-transition: all 0.15s ease-in, background-color 0.15s ease-in;
+}
+.icon-right-arrow:hover, .icon-right-arrow:active {
+	right: -16%;
+}
+.icon-bug:hover, .icon-bug:active {
+	-webkit-transform: rotate(290deg);
+	-moz-transform:  rotate(290deg);
+	-ms-transform: rotate(290deg);
+	-o-transform: rotate(290deg);
+	transform: rotate(290deg);
+}
+
+/* Footer */
+.return-to-top {
+	font-family: "Geogrotesque-SemiBold", "HelveticaNeue", Helvetica, sans-serif;
+}
+.copyright {
+	color: #fefefe;
+	font-size: .7em;
+}
+footer a:link, footer a:visited {
+	color: #fefefe;
+}
+footer a:hover, footer a:active {
+	color: #46b4d3;
+}
+
+/* Utilities */
+.a11y-only { /* visually hidden, but accessible for screen readers */
+	clip: rect(1px, 1px, 1px, 1px);
+	position: absolute !important;
+}
+.bold {
+	font-family: "Geogrotesque-SemiBold", "HelveticaNeue", Helvetica, sans-serif;
+}
+/*.italic {
+	font-family: "Geogrotesque-LightItalic", "HelveticaNeue", Helvetica, sans-serif;
+}*/
+.blue-highlight {
+	background-color: rgba(205, 231, 232, .125);
+	padding: .25em .1em .08em .1em;
+}
+.red-highlight {
+	background-color: rgba(248, 190, 169, .15);
+	padding: .25em .1em .08em .1em;
+}
+::selection {
+	background-color: rgba(205, 231, 232, .2);
+	background-color: #ebf3f5;
+}
+/*Parent Folders aren't done yet. Check: https://github.com/ruhoh/ruhoh.rb/pull/146*/
+.active a.active {
+	color: #46b4d3;
+}
+
+/*#disqus_thread {
+	margin-top: 2.5em;
+}*/
+/* Scroll Bar Styles */
+/*::-webkit-scrollbar {
+    width: .8em;
+}
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 .1em #fefefe;
+    background-color: #fefefe;
+}
+::-webkit-scrollbar-thumb {
+	border-bottom: solid 1px #fff;
+    border-radius: 2em;
+	border-top: solid 1px #fff;
+    box-shadow: inset 0 0 1px #111;
+	background-color: #dfe3e3;
+}
+::-webkit-scrollbar-thumb:window-inactive {
+	background: rgba(0,0,0,0.0);
+}*/
+
+/* For now, borders & pseudo elements render better than CSS3 Gradients */
+header .nav-block:after {
+	border-top: 0 solid transparent;
+	border-bottom: 4.35em solid transparent;
+	border-left: 1.3em solid #111;
+	content: "";
+	position: absolute;
+}
+header .nav-block:before {
+	border-top: 4.35em solid transparent;
+	border-bottom: 0 solid transparent;
+	border-right: 1.3em solid #fefefe;
+	content: "";
+	position: absolute;
+	right: 0;
+	bottom: 0;
+}
+footer:before {
+	border-top: 4.35em solid transparent;
+	border-bottom: 0 solid transparent;
+	border-right: 1.3em solid #111;
+	content: "";
+	position: absolute;
+	right: 0;
+	top: -4.1em;
+}
+footer .nav-block:before {
+	border-top: 0 solid transparent;
+	border-bottom: 4.35em solid transparent;
+	border-left: 1.3em solid #fefefe;
+	content: "";
+	position: absolute;
+	left: 0;
+}
+/* We need something to cover up the light bottom if the content isn't high enough */
+/*footer:after {
+	background-color: #111;
+	content: "";
+	height: 100%;
+	position: absolute;
+	top: 100px;
+	width: 100%;
+}*/
+
+/* Buttons */
+.btn {
+	background-color: #dfe3e3;
+    border-radius: .1em;
+	box-shadow: 0 0 0 1px #D5D5D5; 
+  display: inline-block;
+	padding: .5em 1em .4em 1em;
+	transform:skew(-17deg, 0deg);
+    user-select:none;
+
+	-moz-transform:skew(-17deg, 0deg);
+	-webkit-transform:skew(-17deg, 0deg);
+	-o-transform:skew(-17deg, 0deg);
+
+	-webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+}
+.btn:hover, .btn:active {
+	background-color: #fefefe;
+	color: #46b4d3;
+    text-shadow: .06em .06em #f1f1f1;
+}
+a.btn {
+	color: #cb4a29;
+    opacity: .95;
+    /*text-shadow: .04em .04em #fefefe;*/
+	text-transform: uppercase;
+	transition: all 0.15s ease-in;
+
+	-webkit-transition: all 0.15s ease-in;
+	-moz-transition: all 0.15s ease-in;
+	-ms-transition: all 0.15s ease-in;
+	-o-transition: all 0.15s ease-in;
+}
+a.btn span {
+	display: inline-block;
+	transform:skew(17deg, 0deg);
+
+	-moz-transform:skew(17deg, 0deg);
+	-webkit-transform:skew(17deg, 0deg);
+	-o-transform:skew(17deg, 0deg);
+}
+.base-button-text {
+	display: inline-block;
+	font-size: 19px;
+	margin: .5em .5em .5em .5em;
+	line-height: 27px;
+  	opacity: .82;
+}
+
+/* Non Custom Styles */
+/* Navigation Buttons */
+.close-btn {
+/*	background: #111;*/
+/*	border-radius: .1em;
+	border: solid #000 1px;*/
+	display: none;
+	height: 3.2em;
+	outline: none;
+	overflow: hidden;
+	padding: .319em;
+	text-indent: 200%;
+	white-space: nowrap;
+	width: 3.55em;
+
+	-webkit-transition: opacity 0.15s ease-in;
+	-moz-transition: opacity 0.15s ease-in;
+	-ms-transition: opacity 0.15s ease-in;
+	-o-transition: opacity 0.15s ease-in;
+}
+.nav-btn {
+/*	background: #111;*/
+/*	border-radius: .1em;
+	border: solid #000 1px;*/
+	height: 3.2em;
+	outline: none;
+	overflow: hidden;
+	padding: .319em;
+	text-indent: 200%;
+	white-space: nowrap;
+	width: 3.55em;
+
+	filter: alpha(Opacity=70);
+	opacity: 0.7;
+
+	-webkit-transition: opacity 0.15s ease-in;
+	-moz-transition: opacity 0.15s ease-in;
+	-ms-transition: opacity 0.15s ease-in;
+	-o-transition: opacity 0.15s ease-in;
+}
+header .nav-btn {
+	position: absolute;
+	top: 2.5em;
+	left: 10%;
+}
+.nav-btn:hover, .nav-btn:focus {
+	filter: alpha(Opacity=50);
+	opacity: .5;
+}
+
+/* http://timkadlec.com/2012/10/ie10-snap-mode-and-responsive-design/ */
+@-ms-viewport {
+  width: device-width;
+}
+@viewport {
+  width: device-width;
+}
+
+/* max-width: 47em */
+@media screen and (max-width: 47em) {
+
+/* Non Custom Styles - These need to be organized better! */
+#global-nav {
+	padding-top: 8.5em;
+	position: absolute;
+	top: 0;
+}
+#global-nav:not(:target) {
+	height: 0;
+	z-index: 1;
+}
+#global-nav:target .close-btn {
+	display: block;
+}
+#global-nav .close-btn {
+	position: absolute;
+	top: -6em;
+	left: 10%;
+}
+#global-nav .nav-block {
+	padding: 0;
+	position: relative;
+	background: #fefefe;
+}
+#global-nav .nav-block a:link, #global-nav .nav-block a:visited {
+	color: #CCC;
+}
+#global-nav .nav-block a:hover, #global-nav .nav-block a:focus, #global-nav .nav-block .active a {
+	color: #46b4d3;
+}
+#global-nav li {
+	position: relative; /* Better way of redoing this? */
+}
+#global-nav li.active:after { /* Triangle Active Nav */
+	border-top: 1.4em transparent solid;
+	border-bottom: 1.4em transparent solid;
+	border-left: 0.4em #444 solid;
+	display: block;
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: -0.1em;
+	margin-top: -1.4em;
+	z-index: 50;
+}
+.js-ready #global-nav {
+	background: #111;
+	height: 100%;
+	width: 70%;
+}
+.js-ready #global-nav .nav-block {
+	 background: transparent;
+}
+.js-ready #global-nav .close-btn {
+	display: block;
+	filter: alpha(Opacity=70);
+	opacity: 0.7;
+}
+.js-ready #global-nav .close-btn:focus, .js-ready #global-nav .close-btn:hover {
+	filter: alpha(Opacity=50);
+	opacity: .5;
+}
+.js-ready #global-nav {
+	left: -70%;
+	-webkit-box-shadow: inset -1.5em 0 0.5em -1.4em rgba(255, 255, 255, .15);
+    -moz-box-shadow: inset -1.5em 0 0.5em -1.4em rgba(255, 255, 255, .15);
+    box-shadow: inset -1.5em 0 0.5em -1.4em rgba(255, 255, 255, .15);
+}
+.js-ready #canvas {
+	left: 0;
+}
+.js-nav #inner-wrap {
+	left: 70%;
+}
+.csstransforms3d.csstransitions.js-ready #global-nav {
+	left: 0 !important;
+	-webkit-transform: translate3d(-100%, 0, 0);
+	-moz-transform: translate3d(-100%, 0, 0);
+	-ms-transform: translate3d(-100%, 0, 0);
+	-o-transform: translate3d(-100%, 0, 0);
+	transform: translate3d(-100%, 0, 0);
+	-webkit-backface-visibility: hidden;
+	-moz-backface-visibility: hidden;
+	-ms-backface-visibility: hidden;
+	-o-backface-visibility: hidden;
+	backface-visibility: hidden;
+}
+.csstransforms3d.csstransitions.js-ready #inner-wrap {
+	left: 0 !important;
+	-webkit-transform: translate3d(0, 0, 0);
+	-moz-transform: translate3d(0, 0, 0);
+	-ms-transform: translate3d(0, 0, 0);
+	-o-transform: translate3d(0, 0, 0);
+	transform: translate3d(0, 0, 0);
+	-webkit-transition: -webkit-transform 500ms ease;
+	-moz-transition: -moz-transform 500ms ease;
+	-o-transition: -o-transform 500ms ease;
+	transition: transform 500ms ease;
+	-webkit-backface-visibility: hidden;
+	-moz-backface-visibility: hidden;
+	-ms-backface-visibility: hidden;
+	-o-backface-visibility: hidden;
+	backface-visibility: hidden;
+}
+.csstransforms3d.csstransitions.js-nav #inner-wrap {
+	-webkit-transform: translate3d(70%, 0, 0) scale3d(1, 1, 1);
+	-moz-transform: translate3d(70%, 0, 0) scale3d(1, 1, 1);
+	-ms-transform: translate3d(70%, 0, 0) scale3d(1, 1, 1);
+	-o-transform: translate3d(70%, 0, 0) scale3d(1, 1, 1);
+	transform: translate3d(70%, 0, 0) scale3d(1, 1, 1);
+}
+.csstransforms3d.csstransitions.js-ready #global-nav .nav-block {
+	filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
+	opacity: 0.8;
+	-webkit-transition: opacity 300ms 100ms, -webkit-transform 500ms ease;
+	-webkit-transition-delay: ease, 0s;
+	-moz-transition: opacity 300ms 100ms ease, -moz-transform 500ms ease;
+	-o-transition: opacity 300ms 100ms ease, -o-transform 500ms ease;
+	transition: opacity 300ms 100ms ease, transform 500ms ease;
+	-webkit-transform: translate3d(70%, 0, 0) scale3d(0.9, 0.9, 0.9);
+	-moz-transform: translate3d(70%, 0, 0) scale3d(0.9, 0.9, 0.9);
+	-ms-transform: translate3d(70%, 0, 0) scale3d(0.9, 0.9, 0.9);
+	-o-transform: translate3d(70%, 0, 0) scale3d(0.9, 0.9, 0.9);
+	transform: translate3d(70%, 0, 0) scale3d(0.9, 0.9, 0.9);
+	-webkit-transform-origin: 50% 0%;
+	-moz-transform-origin: 50% 0%;
+	-ms-transform-origin: 50% 0%;
+	-o-transform-origin: 50% 0%;
+	transform-origin: 50% 0%;
+}
+.csstransforms3d.csstransitions.js-nav #global-nav .nav-block {
+	filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+	opacity: 1;
+	-webkit-transform: translate3d(0, 0, 0);
+	-moz-transform: translate3d(0, 0, 0);
+	-ms-transform: translate3d(0, 0, 0);
+	-o-transform: translate3d(0, 0, 0);
+	transform: translate3d(0, 0, 0);
+}
+nav li a.active {
+	color: #46b4d3;
+}
+} /* /max-width: 47em */
+
+/* Non-split styles that don't change again */
+/* min-width: 47em */
+@media screen and (min-width: 47.1em) {
+
+/* Elements */
+nav ul li {
+	border: none;
+	display: inline-block;
+	margin-right: -4px; /* Removes spacing between inline elements */
+	text-align: center;
+	width: 25%;
+	text-transform: uppercase;
+}
+nav ul li:last-child {
+	border: none;
+}
+nav a:link, nav a:visited {
+	color: #CCC;
+	font-size: 1.5em;
+}
+nav ul li a:hover, nav ul li a:active {
+	background: transparent;
+}
+
+/* Logo Container */
+.logo-contain {
+	margin-left: 10%;
+}
+
+/* Containers */
+main {
+	margin-bottom: 3em;
+}
+#inner-wrap {
+	background-position: left 6.85em;
+}
+#global-nav {
+	border: none;
+	margin: -5.8em 10% 1em 20%;
+	width: auto;
+}
+header .nav-clip {
+	padding: 1.3em 0;
+}
+.more-posts {
+	font-size: 1.8em;
+}
+
+/* Icons */
+.icon-right-arrow {
+	right: -10%;
+	opacity: .2;
+}
+.icon-right-arrow:hover, .icon-right-arrow:active {
+	right: -10.8%;
+}
+
+/* Buttons */
+.nav-btn {
+	display: none;
+}
+
+/* Post Content */
+.post-content ul {
+  padding-left: 2em;
+}
+} /* /min-width: 47em */
+
+/* Split Styles */
+/* min-width: 47em and max-width: 67em */
+@media screen and (min-width: 47em) and (max-width: 67em) {
+
+header, footer {
+	background-image: url("../media/cover-medium.jpg");
+}
+
+/* Index Only */
+.intro h1 {
+	font-size: 10em;
+	margin-top: .25em;
+}
+.intro p {
+	font-size: 1.5em;
+	margin-top: 0;
+	margin-bottom: .5em;
+}
+
+h1.page-title {
+	font-size: 4em;
+	margin-top: .97em;
+}
+
+/* Button */ /* Maybe these styles will be reusable for other buttons */
+.base-button-text {
+	font-size: 21px;
+	line-height: 34px;
+}
+
+/* About & Contact Pages */
+.site-info {
+	margin-top: 2em;
+	margin-bottom: 2em;
+}
+.site-info p, .site-info li {
+	font-size: 1.1em;
+	line-height: 1.55em;
+}
+.site-info p {
+	line-height: 1.55em;
+}
+.site-info h2 {
+	font-size: 1.8em;
+	line-height: 1.2em;
+}
+
+/* Work Page Only */
+.portfolio-item-contain {
+	display: inline-block;
+	margin: 1.5em -4px 1em 0;
+	width: 50%;
+}
+.portfolio-item-contain .portfolio-item {
+	width: 88%;
+}
+.posts-container .portfolio-item-contain:nth-child(2n+1) .portfolio-item {
+	margin-left: auto;
+}
+.portfolio-item .post-title {
+	font-size: 1.5em;
+}
+
+/* Posts Containers */
+.posts-container {
+	margin-top: 2em;
+}
+.recent-posts {
+	font-size: 2em;
+}
+.more-posts {
+	margin: .5em 0;
+}
+
+/* Specific Post */
+.blog-post {
+	margin: 2em 0;
+}
+.post-title {
+	font-size: 2em;
+	line-height: 1.2em;
+}
+.post-info {
+	font-size: 1.1em;
+}
+
+/* Article */
+.post-header {
+	font-size: 3.5em;
+	line-height: 1.2em;
+	margin-top: 1.25em;
+}
+.post-content {
+	font-size: 1.1em;
+	line-height: 1.55em;
+}
+.post-content img, .post-content blockquote, .post-content pre {
+	margin: 2em 0;
+}
+} /* /min-width: 47em and max-width: 69em */
+
+/* min-width: 67em */
+@media screen and (min-width: 67em) {
+
+#inner-wrap {
+	background: url("../media/svg/line2.svg") no-repeat;
+	background-position: left 6.85em;
+	background-size: 102% auto; /* Be careful, this doesn't cover the whole screen when it's wide! Add a media Query Fix? */
+	position: relative;
+	width: 100%;
+}
+
+header, footer {
+	background-image: url("../media/cover.jpg");
+}
+
+/* Base Styles */
+.page-title {
+	font-size: 4em;
+	margin-top: 1.07em;
+}
+
+/* Page Dividers */
+.js .icon-divider {
+  opacity:.3;
+}
+
+/* Index Only */
+.intro {
+	margin-bottom: 5.33em;
+}
+.intro h1 {
+	font-size: 13em;
+	margin-top: .35em;
+}
+.intro .primary-heading:after {
+	/*text-shadow: .12rem .12rem #f8f8f8, .18rem .18rem #cb4a29;*/
+}
+.intro p {
+	font-size: 1.8em;
+	margin-top: -.5em;
+	width: 90%;
+}
+
+/* Buttons */
+.base-button-text {
+	font-size: 25px;
+	line-height: 37px;
+}
+
+/* Work Page Only */
+.portfolio-item-contain {
+	display: inline-block;
+	margin: 2em -4px 1em 0;
+	width: 33.333%;
+}
+.portfolio-item-contain .portfolio-item {
+	width: 88%;
+}
+.posts-container .portfolio-item-contain:nth-child(3n) .portfolio-item {
+	margin: 0 auto;
+}
+.posts-container .portfolio-item-contain:nth-child(2n+5) .portfolio-item {
+	/*margin-left: 0;*/
+}
+.posts-container .portfolio-item-contain:nth-child(3n+1) .portfolio-item {
+	margin-left:auto;
+}
+.portfolio-item .post-title {
+	font-size: 1.5em;
+	padding-left: 0;
+}
+
+/* About & Contact Pages */
+.site-info {
+	margin-bottom: 2em;
+}
+.site-info p, .site-info li {
+	font-size: 1.2em;
+	line-height: 1.6em;
+}
+.site-info h2 {
+	font-size: 2em;
+	line-height: 1.8em;
+	margin-bottom: -.6em;
+}
+
+/* About Page Only */
+.col-1 {
+	display: inline-block;
+	margin-top: -1em;
+	width: 60%;
+}
+.col-2 {
+	float: right;
+	margin-top: 3.81em;
+	width: 31.5%;
+}
+
+/* Post Containers */
+.recent-posts {
+	font-size: 2em;
+}
+.more-posts {
+	margin: .5em 0;
+}
+
+/* Specific Post */
+.blog-post {
+	margin: 5em 0;
+}
+.post-title {
+	font-size: 3em;
+	padding: 0 0 0 30%;
+	line-height: 1.2em;
+}
+.post-info {
+	font-size: 1.2em;
+	float: left;
+	line-height: 1.6em;
+	margin: .8em 0 0 0;
+	width: 20%;
+}
+.individual-post .post-info {
+	margin: .95em 0 0 0;
+	line-height: 1.6em;
+}
+.post-content li {
+	margin: .2em 0;
+}
+
+/* Article */
+.post-header {
+	font-size: 4.5em;
+	line-height: 1em;
+	padding: 0 0 0 30%;
+	max-width: 50em;
+}
+/*.case-study .post-header {*/
+	/*max-width: 55em;*/
+/*}*/
+.post-content {
+	font-size: 1.2em;
+	line-height: 1.6em;
+	padding: 0 0 1em 30%;
+	max-width: 50em;
+}
+.case-study .post-content {
+	max-width: 55em;
+}
+.post-content p {
+	margin: 1em 0 1em 0;
+}
+.post-content img {
+	margin: 3.5em 0;
+}
+.post-content blockquote {
+	padding-left: 7.5%;
+}
+
+/* Case Study Only */
+.case-study .post-content {
+	padding: 0;
+}
+.case-study .post-header {
+	padding: 0;
+}
+.case-study .post-info {
+	float: none;
+	margin: 0 20% 0 20%;
+	width: 60%;
+}
+.case-study .post-content p:not(.teaser), .case-study .post-content blockquote, .case-study .post-content ul, .case-study .post-content pre, .case-study .post-content h2, .case-study .post-content h3 {
+	margin-left: 20%;
+	margin-right: 20%;
+}
+.case-study .post-content p:first-of-type {  /* Just to get rid of the markdown paragraph for red highlight, remove for new site */
+	margin-left: 0%;
+	margin-right: 0%;
+}
+.case-study .post-content p:nth-of-type(2) {  /* Just to get rid of the markdown paragraph for hero image, remove for new site */
+	margin-left: 0%;
+	margin-right: 0%;
+}
+.case-study .post-content img.small-image {
+	padding-left: 20%;
+	padding-right: 20%;
+}
+.case-study .post-content .hero-image span img {
+	margin: 3.5em auto;
+	margin-top: 1.7em;
+}
+} /* /min-width: 67em */
